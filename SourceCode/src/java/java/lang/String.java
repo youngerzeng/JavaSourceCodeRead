@@ -1234,13 +1234,10 @@ public final class String
      * Pattern.matches(regex, this)
      * @param   regex
      *          the regular expression to which this string is to be matched
-     *
      * @return  {@code true} if, and only if, this string matches the
      *          given regular expression
-     *
      * @throws  PatternSyntaxException
      *          if the regular expression's syntax is invalid
-     *
      * @see java.util.regex.Pattern
      *
      * @since 1.4
@@ -1251,9 +1248,7 @@ public final class String
     }
 
     /**
-     * Returns true if and only if this string contains the specified
-     * sequence of char values.
-     *
+     * 当且仅当此字符串包含指定的char值序列时才返回true。
      * @param s the sequence to search for
      * @return true if this string contains {@code s}, false otherwise
      * @since 1.5
@@ -1318,88 +1313,17 @@ public final class String
     }
 
     /**
-     * Splits this string around matches of the given
-     * <a href="../util/regex/Pattern.html#sum">regular expression</a>.
-     *
-     * <p> The array returned by this method contains each substring of this
-     * string that is terminated by another substring that matches the given
-     * expression or is terminated by the end of the string.  The substrings in
-     * the array are in the order in which they occur in this string.  If the
-     * expression does not match any part of the input then the resulting array
-     * has just one element, namely this string.
-     *
-     * <p> When there is a positive-width match at the beginning of this
-     * string then an empty leading substring is included at the beginning
-     * of the resulting array. A zero-width match at the beginning however
-     * never produces such empty leading substring.
-     *
-     * <p> The {@code limit} parameter controls the number of times the
-     * pattern is applied and therefore affects the length of the resulting
-     * array.  If the limit <i>n</i> is greater than zero then the pattern
-     * will be applied at most <i>n</i>&nbsp;-&nbsp;1 times, the array's
-     * length will be no greater than <i>n</i>, and the array's last entry
-     * will contain all input beyond the last matched delimiter.  If <i>n</i>
-     * is non-positive then the pattern will be applied as many times as
-     * possible and the array can have any length.  If <i>n</i> is zero then
-     * the pattern will be applied as many times as possible, the array can
-     * have any length, and trailing empty strings will be discarded.
-     *
-     * <p> The string {@code "boo:and:foo"}, for example, yields the
-     * following results with these parameters:
-     *
-     * <blockquote><table cellpadding=1 cellspacing=0 summary="Split example showing regex, limit, and result">
-     * <tr>
-     *     <th>Regex</th>
-     *     <th>Limit</th>
-     *     <th>Result</th>
-     * </tr>
-     * <tr><td align=center>:</td>
-     *     <td align=center>2</td>
-     *     <td>{@code { "boo", "and:foo" }}</td></tr>
-     * <tr><td align=center>:</td>
-     *     <td align=center>5</td>
-     *     <td>{@code { "boo", "and", "foo" }}</td></tr>
-     * <tr><td align=center>:</td>
-     *     <td align=center>-2</td>
-     *     <td>{@code { "boo", "and", "foo" }}</td></tr>
-     * <tr><td align=center>o</td>
-     *     <td align=center>5</td>
-     *     <td>{@code { "b", "", ":and:f", "", "" }}</td></tr>
-     * <tr><td align=center>o</td>
-     *     <td align=center>-2</td>
-     *     <td>{@code { "b", "", ":and:f", "", "" }}</td></tr>
-     * <tr><td align=center>o</td>
-     *     <td align=center>0</td>
-     *     <td>{@code { "b", "", ":and:f" }}</td></tr>
-     * </table></blockquote>
-     *
-     * <p> An invocation of this method of the form
-     * <i>str.</i>{@code split(}<i>regex</i>{@code ,}&nbsp;<i>n</i>{@code )}
-     * yields the same result as the expression
-     *
-     * <blockquote>
-     * <code>
-     * {@link java.util.regex.Pattern}.{@link
-     * java.util.regex.Pattern#compile compile}(<i>regex</i>).{@link
-     * java.util.regex.Pattern#split(java.lang.CharSequence,int) split}(<i>str</i>,&nbsp;<i>n</i>)
-     * </code>
-     * </blockquote>
-     *
-     *
+     * 将此字符串拆分为给定的regular expression的匹配。
      * @param  regex
      *         the delimiting regular expression
-     *
      * @param  limit
      *         the result threshold, as described above
      *
      * @return  the array of strings computed by splitting this string
      *          around matches of the given regular expression
-     *
      * @throws  PatternSyntaxException
      *          if the regular expression's syntax is invalid
-     *
      * @see java.util.regex.Pattern
-     *
      * @since 1.4
      * @spec JSR-51
      */
@@ -1458,29 +1382,7 @@ public final class String
     }
 
     /**
-     * Splits this string around matches of the given <a
-     * href="../util/regex/Pattern.html#sum">regular expression</a>.
-     *
-     * <p> This method works as if by invoking the two-argument {@link
-     * #split(String, int) split} method with the given expression and a limit
-     * argument of zero.  Trailing empty strings are therefore not included in
-     * the resulting array.
-     *
-     * <p> The string {@code "boo:and:foo"}, for example, yields the following
-     * results with these expressions:
-     *
-     * <blockquote><table cellpadding=1 cellspacing=0 summary="Split examples showing regex and result">
-     * <tr>
-     *  <th>Regex</th>
-     *  <th>Result</th>
-     * </tr>
-     * <tr><td align=center>:</td>
-     *     <td>{@code { "boo", "and", "foo" }}</td></tr>
-     * <tr><td align=center>o</td>
-     *     <td>{@code { "b", "", ":and:f" }}</td></tr>
-     * </table></blockquote>
-     *
-     *
+     * 将此字符串拆分为给定的regular expression的匹配。
      * @param  regex
      *         the delimiting regular expression
      *
@@ -1500,18 +1402,7 @@ public final class String
     }
 
     /**
-     * Returns a new String composed of copies of the
-     * {@code CharSequence elements} joined together with a copy of
-     * the specified {@code delimiter}.
-     *
-     * <blockquote>For example,
-     * <pre>{@code
-     *     String message = String.join("-", "Java", "is", "cool");
-     *     // message returned is: "Java-is-cool"
-     * }</pre></blockquote>
-     *
-     * Note that if an element is null, then {@code "null"} is added.
-     *
+     * 返回一个新 String的副本组成 CharSequence elements与指定的副本一起加入 delimiter 。
      * @param  delimiter the delimiter that separates each element
      * @param  elements the elements to join together.
      *
@@ -1536,32 +1427,11 @@ public final class String
     }
 
     /**
-     * Returns a new {@code String} composed of copies of the
-     * {@code CharSequence elements} joined together with a copy of the
-     * specified {@code delimiter}.
-     *
-     * <blockquote>For example,
-     * <pre>{@code
-     *     List<String> strings = new LinkedList<>();
-     *     strings.add("Java");strings.add("is");
-     *     strings.add("cool");
-     *     String message = String.join(" ", strings);
-     *     //message returned is: "Java is cool"
-     *
-     *     Set<String> strings = new LinkedHashSet<>();
-     *     strings.add("Java"); strings.add("is");
-     *     strings.add("very"); strings.add("cool");
-     *     String message = String.join("-", strings);
-     *     //message returned is: "Java-is-very-cool"
-     * }</pre></blockquote>
-     *
-     * Note that if an individual element is {@code null}, then {@code "null"} is added.
-     *
+     * 返回一个新 String的副本组成 CharSequence elements与指定的副本一起加入 delimiter 。
      * @param  delimiter a sequence of characters that is used to separate each
      *         of the {@code elements} in the resulting {@code String}
      * @param  elements an {@code Iterable} that will have its {@code elements}
      *         joined together.
-     *
      * @return a new {@code String} that is composed from the {@code elements}
      *         argument
      *
@@ -1584,50 +1454,7 @@ public final class String
     }
 
     /**
-     * Converts all of the characters in this {@code String} to lower
-     * case using the rules of the given {@code Locale}.  Case mapping is based
-     * on the Unicode Standard version specified by the {@link java.lang.Character Character}
-     * class. Since case mappings are not always 1:1 char mappings, the resulting
-     * {@code String} may be a different length than the original {@code String}.
-     * <p>
-     * Examples of lowercase  mappings are in the following table:
-     * <table border="1" summary="Lowercase mapping examples showing language code of locale, upper case, lower case, and description">
-     * <tr>
-     *   <th>Language Code of Locale</th>
-     *   <th>Upper Case</th>
-     *   <th>Lower Case</th>
-     *   <th>Description</th>
-     * </tr>
-     * <tr>
-     *   <td>tr (Turkish)</td>
-     *   <td>&#92;u0130</td>
-     *   <td>&#92;u0069</td>
-     *   <td>capital letter I with dot above -&gt; small letter i</td>
-     * </tr>
-     * <tr>
-     *   <td>tr (Turkish)</td>
-     *   <td>&#92;u0049</td>
-     *   <td>&#92;u0131</td>
-     *   <td>capital letter I -&gt; small letter dotless i </td>
-     * </tr>
-     * <tr>
-     *   <td>(all)</td>
-     *   <td>French Fries</td>
-     *   <td>french fries</td>
-     *   <td>lowercased all chars in String</td>
-     * </tr>
-     * <tr>
-     *   <td>(all)</td>
-     *   <td><img src="doc-files/capiota.gif" alt="capiota"><img src="doc-files/capchi.gif" alt="capchi">
-     *       <img src="doc-files/captheta.gif" alt="captheta"><img src="doc-files/capupsil.gif" alt="capupsil">
-     *       <img src="doc-files/capsigma.gif" alt="capsigma"></td>
-     *   <td><img src="doc-files/iota.gif" alt="iota"><img src="doc-files/chi.gif" alt="chi">
-     *       <img src="doc-files/theta.gif" alt="theta"><img src="doc-files/upsilon.gif" alt="upsilon">
-     *       <img src="doc-files/sigma1.gif" alt="sigma"></td>
-     *   <td>lowercased all chars in String</td>
-     * </tr>
-     * </table>
-     *
+     * 将所有在此字符 String ，以降低使用给定的规则情况下 Locale 。
      * @param locale use the case transformation rules for this locale
      * @return the {@code String}, converted to lowercase.
      * @see     java.lang.String#toLowerCase()
@@ -1643,7 +1470,7 @@ public final class String
         int firstUpper;
         final int len = value.length;
 
-        /* Now check if there are any characters that need to be changed. */
+        /* scan是标签名 break scan*/
         scan: {
             for (firstUpper = 0 ; firstUpper < len; ) {
                 char c = value[firstUpper];
@@ -1725,21 +1552,7 @@ public final class String
     }
 
     /**
-     * Converts all of the characters in this {@code String} to lower
-     * case using the rules of the default locale. This is equivalent to calling
-     * {@code toLowerCase(Locale.getDefault())}.
-     * <p>
-     * <b>Note:</b> This method is locale sensitive, and may produce unexpected
-     * results if used for strings that are intended to be interpreted locale
-     * independently.
-     * Examples are programming language identifiers, protocol keys, and HTML
-     * tags.
-     * For instance, {@code "TITLE".toLowerCase()} in a Turkish locale
-     * returns {@code "t\u005Cu0131tle"}, where '\u005Cu0131' is the
-     * LATIN SMALL LETTER DOTLESS I character.
-     * To obtain correct results for locale insensitive strings, use
-     * {@code toLowerCase(Locale.ROOT)}.
-     * <p>
+     * 转换为小写
      * @return  the {@code String}, converted to lowercase.
      * @see     java.lang.String#toLowerCase(Locale)
      */
@@ -1748,46 +1561,7 @@ public final class String
     }
 
     /**
-     * Converts all of the characters in this {@code String} to upper
-     * case using the rules of the given {@code Locale}. Case mapping is based
-     * on the Unicode Standard version specified by the {@link java.lang.Character Character}
-     * class. Since case mappings are not always 1:1 char mappings, the resulting
-     * {@code String} may be a different length than the original {@code String}.
-     * <p>
-     * Examples of locale-sensitive and 1:M case mappings are in the following table.
-     *
-     * <table border="1" summary="Examples of locale-sensitive and 1:M case mappings. Shows Language code of locale, lower case, upper case, and description.">
-     * <tr>
-     *   <th>Language Code of Locale</th>
-     *   <th>Lower Case</th>
-     *   <th>Upper Case</th>
-     *   <th>Description</th>
-     * </tr>
-     * <tr>
-     *   <td>tr (Turkish)</td>
-     *   <td>&#92;u0069</td>
-     *   <td>&#92;u0130</td>
-     *   <td>small letter i -&gt; capital letter I with dot above</td>
-     * </tr>
-     * <tr>
-     *   <td>tr (Turkish)</td>
-     *   <td>&#92;u0131</td>
-     *   <td>&#92;u0049</td>
-     *   <td>small letter dotless i -&gt; capital letter I</td>
-     * </tr>
-     * <tr>
-     *   <td>(all)</td>
-     *   <td>&#92;u00df</td>
-     *   <td>&#92;u0053 &#92;u0053</td>
-     *   <td>small letter sharp s -&gt; two letters: SS</td>
-     * </tr>
-     * <tr>
-     *   <td>(all)</td>
-     *   <td>Fahrvergn&uuml;gen</td>
-     *   <td>FAHRVERGN&Uuml;GEN</td>
-     *   <td></td>
-     * </tr>
-     * </table>
+     * 转大写
      * @param locale use the case transformation rules for this locale
      * @return the {@code String}, converted to uppercase.
      * @see     java.lang.String#toUpperCase()
@@ -1888,21 +1662,7 @@ public final class String
     }
 
     /**
-     * Converts all of the characters in this {@code String} to upper
-     * case using the rules of the default locale. This method is equivalent to
-     * {@code toUpperCase(Locale.getDefault())}.
-     * <p>
-     * <b>Note:</b> This method is locale sensitive, and may produce unexpected
-     * results if used for strings that are intended to be interpreted locale
-     * independently.
-     * Examples are programming language identifiers, protocol keys, and HTML
-     * tags.
-     * For instance, {@code "title".toUpperCase()} in a Turkish locale
-     * returns {@code "T\u005Cu0130TLE"}, where '\u005Cu0130' is the
-     * LATIN CAPITAL LETTER I WITH DOT ABOVE character.
-     * To obtain correct results for locale insensitive strings, use
-     * {@code toUpperCase(Locale.ROOT)}.
-     * <p>
+     * 转大写
      * @return  the {@code String}, converted to uppercase.
      * @see     java.lang.String#toUpperCase(Locale)
      */
@@ -1911,32 +1671,7 @@ public final class String
     }
 
     /**
-     * Returns a string whose value is this string, with any leading and trailing
-     * whitespace removed.
-     * <p>
-     * If this {@code String} object represents an empty character
-     * sequence, or the first and last characters of character sequence
-     * represented by this {@code String} object both have codes
-     * greater than {@code '\u005Cu0020'} (the space character), then a
-     * reference to this {@code String} object is returned.
-     * <p>
-     * Otherwise, if there is no character with a code greater than
-     * {@code '\u005Cu0020'} in the string, then a
-     * {@code String} object representing an empty string is
-     * returned.
-     * <p>
-     * Otherwise, let <i>k</i> be the index of the first character in the
-     * string whose code is greater than {@code '\u005Cu0020'}, and let
-     * <i>m</i> be the index of the last character in the string whose code
-     * is greater than {@code '\u005Cu0020'}. A {@code String}
-     * object is returned, representing the substring of this string that
-     * begins with the character at index <i>k</i> and ends with the
-     * character at index <i>m</i>-that is, the result of
-     * {@code this.substring(k, m + 1)}.
-     * <p>
-     * This method may be used to trim whitespace (as defined above) from
-     * the beginning and end of a string.
-     *
+     * 去空格
      * @return  A string whose value is this string, with any leading and trailing white
      *          space removed, or this string if it has no leading or
      *          trailing white space.
@@ -1965,8 +1700,7 @@ public final class String
     }
 
     /**
-     * Converts this string to a new character array.
-     *
+     * 用System.arraycopy复制数组
      * @return  a newly allocated character array whose length is the length
      *          of this string and whose contents are initialized to contain
      *          the character sequence represented by this string.
@@ -1979,12 +1713,7 @@ public final class String
     }
 
     /**
-     * Returns a formatted string using the specified format string and
-     * arguments.
-     *
-     * <p> The locale always used is the one returned by {@link
-     * java.util.Locale#getDefault() Locale.getDefault()}.
-     *
+     * 使用指定的格式字符串和参数返回格式化的字符串。
      * @param  format
      *         A <a href="../util/Formatter.html#syntax">format string</a>
      *
