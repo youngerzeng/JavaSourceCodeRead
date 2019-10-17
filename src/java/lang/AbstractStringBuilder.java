@@ -29,16 +29,7 @@ import sun.misc.FloatingDecimal;
 import java.util.Arrays;
 
 /**
- * A mutable sequence of characters.
- * <p>
- * Implements a modifiable string. At any point in time it contains some
- * particular sequence of characters, but the length and content of the
- * sequence can be changed through certain method calls.
- *
- * <p>Unless otherwise noted, passing a {@code null} argument to a constructor
- * or method in this class will cause a {@link NullPointerException} to be
- * thrown.
- *
+ * 可变字符串序列抽象类
  * @author      Michael McCloskey
  * @author      Martin Buchholz
  * @author      Ulf Zibis
@@ -46,12 +37,12 @@ import java.util.Arrays;
  */
 abstract class AbstractStringBuilder implements Appendable, CharSequence {
     /**
-     * The value is used for character storage.
+     * 可变字符数组
      */
     char[] value;
 
     /**
-     * The count is the number of characters used.
+     *  字符串长度
      */
     int count;
 
@@ -91,19 +82,7 @@ abstract class AbstractStringBuilder implements Appendable, CharSequence {
     }
 
     /**
-     * Ensures that the capacity is at least equal to the specified minimum.
-     * If the current capacity is less than the argument, then a new internal
-     * array is allocated with greater capacity. The new capacity is the
-     * larger of:
-     * <ul>
-     * <li>The {@code minimumCapacity} argument.
-     * <li>Twice the old capacity, plus {@code 2}.
-     * </ul>
-     * If the {@code minimumCapacity} argument is nonpositive, this
-     * method takes no action and simply returns.
-     * Note that subsequent operations on this object can reduce the
-     * actual capacity below that requested here.
-     *
+     * 确保容量至少等于规定的最小值。
      * @param   minimumCapacity   the minimum desired capacity.
      */
     public void ensureCapacity(int minimumCapacity) {

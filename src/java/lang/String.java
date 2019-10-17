@@ -1909,7 +1909,7 @@ public final class String
      * <p>
      * The representation is exactly the one returned by the
      * {@code Double.toString} method of one argument.
-     * 
+     *
      * @param   d   a {@code double}.
      * @return  a  string representation of the {@code double} argument.
      * @see     java.lang.Double#toString(double)
