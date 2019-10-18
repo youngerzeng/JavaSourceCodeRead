@@ -93,7 +93,10 @@ import java.util.Arrays;
         return value.length;
     }
 
-
+    /**
+     * 确保容量至少等于规定的最小值。
+     * @param minimumCapacity
+     */
     @Override
     public synchronized void ensureCapacity(int minimumCapacity) {
         if (minimumCapacity > value.length) {
@@ -102,6 +105,7 @@ import java.util.Arrays;
     }
 
     /**
+     * 尝试减少用于字符序列的存储。 count = length
      * @since      1.5
      */
     @Override
@@ -199,25 +203,7 @@ import java.util.Arrays;
     }
 
     /**
-     * Appends the specified {@code StringBuffer} to this sequence.
-     * <p>
-     * The characters of the {@code StringBuffer} argument are appended,
-     * in order, to the contents of this {@code StringBuffer}, increasing the
-     * length of this {@code StringBuffer} by the length of the argument.
-     * If {@code sb} is {@code null}, then the four characters
-     * {@code "null"} are appended to this {@code StringBuffer}.
-     * <p>
-     * Let <i>n</i> be the length of the old character sequence, the one
-     * contained in the {@code StringBuffer} just prior to execution of the
-     * {@code append} method. Then the character at index <i>k</i> in
-     * the new character sequence is equal to the character at index <i>k</i>
-     * in the old character sequence, if <i>k</i> is less than <i>n</i>;
-     * otherwise, it is equal to the character at index <i>k-n</i> in the
-     * argument {@code sb}.
-     * <p>
-     * This method synchronizes on {@code this}, the destination
-     * object, but does not synchronize on the source ({@code sb}).
-     *
+     * 追加
      * @param   sb   the {@code StringBuffer} to append.
      * @return  a reference to this object.
      * @since 1.4
@@ -229,6 +215,7 @@ import java.util.Arrays;
     }
 
     /**
+     * 追加
      * @since 1.8
      */
     @Override
@@ -239,22 +226,7 @@ import java.util.Arrays;
     }
 
     /**
-     * Appends the specified {@code CharSequence} to this
-     * sequence.
-     * <p>
-     * The characters of the {@code CharSequence} argument are appended,
-     * in order, increasing the length of this sequence by the length of the
-     * argument.
-     *
-     * <p>The result of this method is exactly the same as if it were an
-     * invocation of this.append(s, 0, s.length());
-     *
-     * <p>This method synchronizes on {@code this}, the destination
-     * object, but does not synchronize on the source ({@code s}).
-     *
-     * <p>If {@code s} is {@code null}, then the four characters
-     * {@code "null"} are appended.
-     *
+     * 追加
      * @param   s the {@code CharSequence} to append.
      * @return  a reference to this object.
      * @since 1.5
@@ -617,8 +589,8 @@ import java.util.Arrays;
     };
 
     /**
-     * readObject is called to restore the state of the StringBuffer from
-     * a stream.
+     * 写入流
+     * private 不可被调用
      */
     private synchronized void writeObject(java.io.ObjectOutputStream s)
         throws java.io.IOException {
@@ -630,8 +602,8 @@ import java.util.Arrays;
     }
 
     /**
-     * readObject is called to restore the state of the StringBuffer from
-     * a stream.
+     * 读取流
+     * private 不可被调用
      */
     private void readObject(java.io.ObjectInputStream s)
         throws java.io.IOException, ClassNotFoundException {

@@ -27,47 +27,8 @@ package java.lang;
 
 
 /**
- * A mutable sequence of characters.  This class provides an API compatible
- * with {@code StringBuffer}, but with no guarantee of synchronization.
- * This class is designed for use as a drop-in replacement for
- * {@code StringBuffer} in places where the string buffer was being
- * used by a single thread (as is generally the case).   Where possible,
- * it is recommended that this class be used in preference to
- * {@code StringBuffer} as it will be faster under most implementations.
- *
- * <p>The principal operations on a {@code StringBuilder} are the
- * {@code append} and {@code insert} methods, which are
- * overloaded so as to accept data of any type. Each effectively
- * converts a given datum to a string and then appends or inserts the
- * characters of that string to the string builder. The
- * {@code append} method always adds these characters at the end
- * of the builder; the {@code insert} method adds the characters at
- * a specified point.
- * <p>
- * For example, if {@code z} refers to a string builder object
- * whose current contents are "{@code start}", then
- * the method call {@code z.append("le")} would cause the string
- * builder to contain "{@code startle}", whereas
- * {@code z.insert(4, "le")} would alter the string builder to
- * contain "{@code starlet}".
- * <p>
- * In general, if sb refers to an instance of a {@code StringBuilder},
- * then {@code sb.append(x)} has the same effect as
- * {@code sb.insert(sb.length(), x)}.
- * <p>
- * Every string builder has a capacity. As long as the length of the
- * character sequence contained in the string builder does not exceed
- * the capacity, it is not necessary to allocate a new internal
- * buffer. If the internal buffer overflows, it is automatically made larger.
- *
- * <p>Instances of {@code StringBuilder} are not safe for
- * use by multiple threads. If such synchronization is required then it is
- * recommended that {@link java.lang.StringBuffer} be used.
- *
- * <p>Unless otherwise noted, passing a {@code null} argument to a constructor
- * or method in this class will cause a {@link NullPointerException} to be
- * thrown.
- *
+ * 不保证同步的可变字符序列
+ * 基本调用AbstractStringBuilder方法，见AbstractStringBuilder
  * @author      Michael McCloskey
  * @see         java.lang.StringBuffer
  * @see         java.lang.String
