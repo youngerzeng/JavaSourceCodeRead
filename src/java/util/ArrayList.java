@@ -93,9 +93,7 @@ public class ArrayList<E> extends AbstractList<E>
     }
 
     /**
-     * Trims the capacity of this <tt>ArrayList</tt> instance to be the
-     * list's current size.  An application can use this operation to minimize
-     * the storage of an <tt>ArrayList</tt> instance.
+     * 修改这个 ArrayList实例的容量是列表的当前大小。
      */
     public void trimToSize() {
         modCount++;
@@ -107,10 +105,7 @@ public class ArrayList<E> extends AbstractList<E>
     }
 
     /**
-     * Increases the capacity of this <tt>ArrayList</tt> instance, if
-     * necessary, to ensure that it can hold at least the number of elements
-     * specified by the minimum capacity argument.
-     *
+     * 如果需要，增加此 ArrayList实例的容量，以确保它可以至少保存最小容量参数指定的元素数。
      * @param   minCapacity   the desired minimum capacity
      */
     public void ensureCapacity(int minCapacity) {
@@ -177,8 +172,7 @@ public class ArrayList<E> extends AbstractList<E>
     }
 
     /**
-     * Returns the number of elements in this list.
-     *
+     * 返回此列表中的元素数。
      * @return the number of elements in this list
      */
     public int size() {
@@ -195,11 +189,7 @@ public class ArrayList<E> extends AbstractList<E>
     }
 
     /**
-     * Returns <tt>true</tt> if this list contains the specified element.
-     * More formally, returns <tt>true</tt> if and only if this list contains
-     * at least one element <tt>e</tt> such that
-     * <tt>(o==null&nbsp;?&nbsp;e==null&nbsp;:&nbsp;o.equals(e))</tt>.
-     *
+     * 是否包含此元素
      * @param o element whose presence in this list is to be tested
      * @return <tt>true</tt> if this list contains the specified element
      */
@@ -208,15 +198,12 @@ public class ArrayList<E> extends AbstractList<E>
     }
 
     /**
-     * Returns the index of the first occurrence of the specified element
-     * in this list, or -1 if this list does not contain the element.
-     * More formally, returns the lowest index <tt>i</tt> such that
-     * <tt>(o==null&nbsp;?&nbsp;get(i)==null&nbsp;:&nbsp;o.equals(get(i)))</tt>,
-     * or -1 if there is no such index.
+     * o所在的索引
      */
     public int indexOf(Object o) {
         if (o == null) {
             for (int i = 0; i < size; i++)
+                //判断第一个等于Null的索引
                 if (elementData[i]==null)
                     return i;
         } else {
@@ -224,15 +211,12 @@ public class ArrayList<E> extends AbstractList<E>
                 if (o.equals(elementData[i]))
                     return i;
         }
+        //如果不存在则为-1
         return -1;
     }
 
     /**
-     * Returns the index of the last occurrence of the specified element
-     * in this list, or -1 if this list does not contain the element.
-     * More formally, returns the highest index <tt>i</tt> such that
-     * <tt>(o==null&nbsp;?&nbsp;get(i)==null&nbsp;:&nbsp;o.equals(get(i)))</tt>,
-     * or -1 if there is no such index.
+     * 从后往前数
      */
     public int lastIndexOf(Object o) {
         if (o == null) {
@@ -248,10 +232,7 @@ public class ArrayList<E> extends AbstractList<E>
     }
 
     /**
-     * Returns a shallow copy of this <tt>ArrayList</tt> instance.  (The
-     * elements themselves are not copied.)
-     *
-     * @return a clone of this <tt>ArrayList</tt> instance
+     * 返回此ArrayList实例的浅拷贝。 （元素本身不被复制。）
      */
     public Object clone() {
         try {
@@ -266,16 +247,7 @@ public class ArrayList<E> extends AbstractList<E>
     }
 
     /**
-     * Returns an array containing all of the elements in this list
-     * in proper sequence (from first to last element).
-     *
-     * <p>The returned array will be "safe" in that no references to it are
-     * maintained by this list.  (In other words, this method must allocate
-     * a new array).  The caller is thus free to modify the returned array.
-     *
-     * <p>This method acts as bridge between array-based and collection-based
-     * APIs.
-     *
+     * 转换为数组
      * @return an array containing all of the elements in this list in
      *         proper sequence
      */
@@ -284,20 +256,7 @@ public class ArrayList<E> extends AbstractList<E>
     }
 
     /**
-     * Returns an array containing all of the elements in this list in proper
-     * sequence (from first to last element); the runtime type of the returned
-     * array is that of the specified array.  If the list fits in the
-     * specified array, it is returned therein.  Otherwise, a new array is
-     * allocated with the runtime type of the specified array and the size of
-     * this list.
-     *
-     * <p>If the list fits in the specified array with room to spare
-     * (i.e., the array has more elements than the list), the element in
-     * the array immediately following the end of the collection is set to
-     * <tt>null</tt>.  (This is useful in determining the length of the
-     * list <i>only</i> if the caller knows that the list does not contain
-     * any null elements.)
-     *
+     *以正确的顺序返回一个包含此列表中所有元素的数组（从第一个到最后一个元素）; 返回的数组的运行时类型是指定数组的运行时类型。
      * @param a the array into which the elements of the list are to
      *          be stored, if it is big enough; otherwise, a new array of the
      *          same runtime type is allocated for this purpose.
@@ -310,7 +269,7 @@ public class ArrayList<E> extends AbstractList<E>
     @SuppressWarnings("unchecked")
     public <T> T[] toArray(T[] a) {
         if (a.length < size)
-            // Make a new array of a's runtime type, but my contents:
+            //强制转换
             return (T[]) Arrays.copyOf(elementData, size, a.getClass());
         System.arraycopy(elementData, 0, a, 0, size);
         if (a.length > size)
@@ -362,6 +321,7 @@ public class ArrayList<E> extends AbstractList<E>
      * @return <tt>true</tt> (as specified by {@link Collection#add})
      */
     public boolean add(E e) {
+        //先扩容
         ensureCapacityInternal(size + 1);  // Increments modCount!!
         elementData[size++] = e;
         return true;
